@@ -1,0 +1,24 @@
+CREATE TABLE streets(
+id int(12) NOT NULL,
+streetName varchar(80) NOT NULL,
+longitude float NOT NULL,
+latitude float NOT NULL,
+area varchar(20) NULL,
+speedlimit float NOT NULL,
+density float NULL,
+dangerId float NULL);
+
+mysql> ALTER TABLE streets ADD PRIMARY KEY (id);
+
+
+CREATE TABLE cars(
+id int(12) NOT NULL,
+streetId int(12) NOT NULL,
+speed float NULL,
+size float NULL,
+timeStamp date,
+direction int(1) NULL);
+
+
+mysql> ALTER TABLE cars ADD PRIMARY KEY (id);
+mysql> ALTER TABLE cars ADD FOREIGN KEY (streetId) REFERENCES streets(id);
