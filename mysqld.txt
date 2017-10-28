@@ -1,24 +1,26 @@
 CREATE TABLE streets(
-id int(12) NOT NULL,
+id int(12) NOT NULL AUTO_INCREMENT,
 streetName varchar(80) NOT NULL,
 longitude float NOT NULL,
 latitude float NOT NULL,
 area varchar(20) NULL,
 speedlimit float NOT NULL,
 density float NULL,
-dangerId float NULL);
-
-mysql> ALTER TABLE streets ADD PRIMARY KEY (id);
-
+dangerId float NULL,
+PRIMARY KEY (id));
 
 CREATE TABLE cars(
-id int(12) NOT NULL,
+id int(12) NOT NULL AUTO_INCREMENT,
 streetId int(12) NOT NULL,
 speed float NULL,
 size float NULL,
 timeStamp date,
-direction int(1) NULL);
+direction int(1) NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (streetId) REFERENCES streets(id));
 
 
-mysql> ALTER TABLE cars ADD PRIMARY KEY (id);
-mysql> ALTER TABLE cars ADD FOREIGN KEY (streetId) REFERENCES streets(id);
+// Insert indexes with mysql shell
+// mysql> ALTER TABLE cars ADD PRIMARY KEY (id);
+// mysql> ALTER TABLE cars ADD FOREIGN KEY (streetId) REFERENCES streets(id);
+// mysql> ALTER TABLE streets ADD PRIMARY KEY (id);
